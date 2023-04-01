@@ -20,7 +20,7 @@ public class BookEntity {
     @Column(name = "author")
     private String author;
     @Column(name = "publish_year")
-    private LocalDate publishYear; //
+    private LocalDate publishYear;
     @Column(name = "amount")
     private Integer amount;
     @Column(name = "visible")

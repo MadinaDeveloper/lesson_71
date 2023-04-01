@@ -13,7 +13,6 @@ public class StudentBookDTO {
     private Integer id;
     private Integer studentId;
     private Integer bookId;
-
     private LocalDateTime createdDate;
     private StudentBookStatus status;
 }
