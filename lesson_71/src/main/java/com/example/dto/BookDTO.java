@@ -10,7 +10,6 @@ public class BookDTO {
     private  Integer id;
     private  String title;
     private  String author;
-//    private LocalDateTime publishYear;
-//    private Integer amount;
-//    private Boolean visible;
+    private Integer amount;
+    private Boolean visible;
 }

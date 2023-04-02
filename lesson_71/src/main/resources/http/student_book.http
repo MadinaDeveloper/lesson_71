@@ -3,19 +3,19 @@ POST localhost:8080/student-book/take
 Content-Type: application/json
 
 {
-  "bookId": 100,
+  "bookId": 3,
   "studentId": 1
 }
 
 ### StudentBook update
-PUT localhost:777/studentBook/update/{{id}}
+PUT localhost:8080/studentBook/update/{{id}}
 Content-Type: application/json
 
 {
 }
 
 ### StudentBook list
-GET localhost:777/studentBook/list
+GET localhost:8080/studentBook/list
 
 ### Student Delete
-DELETE localhost:777/student/delete/1
+DELETE localhost:8080/student/delete/1

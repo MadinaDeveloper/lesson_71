@@ -23,8 +23,10 @@ public class BookController {
     public BookController() {
         BookDTO bookDTO = new BookDTO();
         bookDTO.setId(1);
-        bookDTO.setTitle("Java");
-        bookDTO.setAuthor("Alisher");
+        bookDTO.setTitle("Javachi");
+        bookDTO.setAuthor("Tog`ang");
+        bookDTO.setAmount(120);
+        bookDTO.setVisible(true);
 
         bookDTOList.add(bookDTO);
     }
@@ -50,7 +52,7 @@ public class BookController {
             return ResponseEntity.ok(response);
         } catch (AppBadRequestException e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body("Book Not Found");
         }
     }
 
@@ -64,5 +66,9 @@ public class BookController {
             }
         }
         return false;
+    }
+    @DeleteMapping(value = "/delete/{id}")
+    public Boolean delete(@PathVariable("id") String id) {
+        return bookDTOList.removeIf(bookDTO -> bookDTO.getId().equals(id));
     }
 }

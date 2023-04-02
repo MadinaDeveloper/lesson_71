@@ -2,7 +2,7 @@
 GET localhost:8080/book/list
 
 ### Book by id
-GET localhost:8080/book/get/
+GET localhost:8080/book/get/6
 
 ### Book create
 POST localhost:8080/book/create
@@ -10,10 +10,12 @@ Content-Type: application/json
 
 {
   "title": "Java",
-  "author": "Ali"
+  "author": "vali",
+  "amount": "100",
+  "visible": "true"
 }
 ### Book update
-PUT localhost:8080/book/update/
+PUT localhost:8080/book/update/7
 Content-Type: application/json
 
 {
@@ -22,4 +24,4 @@ Content-Type: application/json
 }
 
 ### Book delete
-DELETE localhost:8080/book/delete/
+DELETE localhost:8080/book/delete/1

@@ -30,4 +30,7 @@ public class StudentRepository {
     }
 
 
+    public void delete(StudentEntity entity) {
+
+    }
 }

@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.StudentDTO;
 import com.example.exp.AppBadRequestException;
+import com.example.exp.PhoneAlreadyExistExeption;
 import com.example.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,14 +20,7 @@ public class StudentController {
     private StudentService studentService;
     private List<StudentDTO> studentList = new LinkedList<>();
 
-    public StudentController() {
-        StudentDTO s1 = new StudentDTO();
-        s1.setId(1);
-        s1.setName("Alish");
-        s1.setSurname("Aliyev");
 
-        studentList.add(s1);
-    }
 
     @GetMapping("/list")
     public List<StudentDTO> getAll() {
@@ -36,9 +30,6 @@ public class StudentController {
     @GetMapping(value = "/get/{id}")
     public ResponseEntity<?> getById(@PathVariable("id") String id) {
         Optional<StudentDTO> optional = studentList.stream().filter(studentDTO -> studentDTO.getId().equals(id)).findAny();
-        if (optional.isEmpty()) {
-            return ResponseEntity.badRequest().body("Student Not Found");
-        }
         return ResponseEntity.ok(optional.get());
     }
 
@@ -59,13 +50,9 @@ public class StudentController {
 
 //        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        return ResponseEntity.badRequest().build();
-        try {
             StudentDTO response = studentService.crate(studentDTO);
             return ResponseEntity.ok(response);
-        } catch (AppBadRequestException e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+
     }
 
     @PostMapping(value = "/create/all")
@@ -93,4 +80,6 @@ public class StudentController {
     public Boolean delete(@PathVariable("id") String id) {
         return studentList.removeIf(studentDTO -> studentDTO.getId().equals(id));
     }
+
+
 }
